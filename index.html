@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     <style>
         body {background-color: powderblue;}
         h1   {color: blue;}
@@ -11,29 +14,34 @@
         </style>
 </head>
 <body>
-    <h2>HAHA</h2>
-    <input type="hidden" name="form-name" value="name_of_my_form" />
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+      </form>
 
-    <form actions="POST" data-netlify="true">
-        <div>
-            <div>
-                <input type="text" name="name" id="name" placeholder="Name" />
-            </div>
-            <div>
-                <input type="email" name="email" id="email" placeholder="Email" />
-            </div>
-            <div>
-                <textarea name="message" id="message" placeholder="Message" rows="7"></textarea>
-            </div>
+      <div id="root"></div>
+    <script type="text/babel">
 
-            <div>
-                <div data-netlify-recaptcha="true"></div>
-            </div>
-        </div>
-        <ul>
-            <li><input type="submit" value="Send Message" /></li>
-        </ul>
-    </form>
-      
+      ReactDOM.render(
+        <form name="contact" method="post">
+          <input type="hidden" name="form-name" value="contact" />
+          <p>
+            <label>Your Name: <input type="text" name="name"/></label>
+          </p>
+          <p>
+            <label>Your Email: <input type="email" name="email"/></label>
+          </p>
+          <p>
+            <label>Message: <textarea name="message"></textarea></label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>,
+        document.getElementById("root")
+      );
+
+    </script>
 </body>
 </html>
