@@ -15,26 +15,26 @@
 
     <input type="hidden" name="form-name" value="contact">
 
-    <form name="contact" actions="POST" data-netlify="true">
-        <p>
-          <label>Your Name: <input type="text" name="name" /></label>   
-        </p>
-        <p>
-          <label>Your Email: <input type="email" name="email" /></label>
-        </p>
-        <p>
-          <label>Your Role: <select name="role[]" multiple>
-            <option value="leader">Leader</option>
-            <option value="follower">Follower</option>
-          </select></label>
-        </p>
-        <p>
-          <label>Message: <textarea name="message"></textarea></label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
-      </form>
+    <form actions="POST" data-netlify="true">
+        <div class="fields">
+            <div>
+                <input type="text" name="name" id="name" placeholder="Name" />
+            </div>
+            <div>
+                <input type="email" name="email" id="email" placeholder="Email" />
+            </div>
+            <div>
+                <textarea name="message" id="message" placeholder="Message" rows="7"></textarea>
+            </div>
+
+            <div>
+                <div data-netlify-recaptcha="true"></div>
+            </div>
+        </div>
+        <ul>
+            <li><input type="submit" value="Send Message" /></li>
+        </ul>
+    </form>
       
 </body>
 </html>
